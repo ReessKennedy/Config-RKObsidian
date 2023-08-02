@@ -1,0 +1,83 @@
+/*
+---------
+HEADER COLLAPSE
+- ADDS BRIGHT BLUE IF HEADER IS COLLAPSED TO MAKE IT VERY OBVIOUS
+---------
+*/
+.cm-editor .is-collapsed {
+	background: blue;
+}
+
+/*
+---------
+IMAGES
+- Adding boxes around embeds, more like Wikipedia
+---------
+*/
+.image-embed img {
+	/** Styles taken from Wikipedia images **/
+	padding: 3px;
+	border: 1px solid #c8ccd1;
+	background-color: #f8f9fa;
+	font-size: 94%;
+}
+
+
+/*
+---------
+ORDERED LISTS
+- Changes color (was a muted gray)
+---------
+*/
+.cm-s-obsidian .cm-formatting-list, 
+ol li::marker /* Think this one is frontend */
+{
+  color: var(--color-orange);
+}
+
+
+/** I guess I had already messed with this */
+ol li {
+  counter-increment: list;
+  list-style-type: none;
+  position: relative;
+}
+
+/* Output the numbers using the counter() function, but use a custom color, and position the numbers how we want */
+ol li:before {
+  color: #e75204;
+  content: counter(list) ".";
+  left: -32px;
+  position: absolute;
+  text-align: right;
+  width: 26px;
+}
+
+/*
+---------
+HIGHER ACCENT COLOR
+- Issue: I was having a hard time reading the blue color when in dark mode
+- Solution: Increase contrast of accent color by making it darker in light mode and lighter in dark mode. FROM HERE: https://forum.obsidian.md/t/higher-contrast-accent-color-in-both-light-and-dark-modes-css-snippet/46512
+- Note: Current shade of Blue = #1266ED -- I lost the previous shade of blue I was using which I liked but got something similar
+---------
+*/
+body {
+	--accent-l-diff: 13%;
+}
+/* My light version felt fine so just need to change the dark */
+/*
+.theme-light {
+	--accent-l-mod: calc(var(--accent-l) - var(--accent-l-diff));
+    --color-accent-hsl: var(--accent-h), var(--accent-s), var(--accent-l-mod);
+    --color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l-mod)); 
+	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l-mod) + 2.5%));
+    --color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l-mod) + 5%));
+}
+*/
+.theme-dark {
+	--accent-l-mod: calc(var(--accent-l) + var(--accent-l-diff));
+    --color-accent-hsl: var(--accent-h), var(--accent-s), var(--accent-l-mod);
+    --color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l-mod));
+	--color-accent-1: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l-mod) + 2.5%));
+    --color-accent-2: hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l-mod) + 5%));
+}
