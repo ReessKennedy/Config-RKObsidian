@@ -1,5 +1,47 @@
 /*
 ---------
+JOURNAL HEADER MODS
+- ADDS BRIGHT BLUE IF HEADER IS COLLAPSED TO MAKE IT VERY OBVIOUS
+H1
+- Previously tried to target ".journal .cm-header-1" but didn't work and below seems to
+- Tried these too: font-size: var(--font-text-size); - xpadding-left: 5px; - xtext-decoration: underline; - xdisplay: inline-block;
+H2 - H4 below too
+---------
+*/
+/* H1 only on Journal pages -- making h1 small here to prefix time */
+.journal.markdown-source-view.mod-cm6 .cm-content > .HyperMD-header-1
+{
+	xmargin-top: 0px !important; /* Attempting to fix wonkiness by using padding instead of margins */
+	xmargin-bottom: 0px !important; /* Attempting to fix wonkiness by using padding instead of margins */
+	padding-top: 30px !important; padding-bottom: 6px !important;
+
+	font-size: 17px !important;
+	padding-left: 0px !important;
+	font-weight: 400;
+	color: #7a7676 !important;
+	
+	xcolor: #5B95F3 !important; /* Blue color was way it was but gray might be better */
+	xbackground: #6A3C14; /* Color from Textmate */
+	xborder-bottom: 1px solid #6A3C14 !important;
+}
+/* h1 elsewhere is slightly smaller */
+.inline-title  { font-size: 1.6rem !important; font-weight: 600; }
+/* h2 and h3 */
+.HyperMD-header .cm-header-2, .HyperMD-header .cm-header-3 { font-size: 1.4rem !important; font-weight: 600 !important;	xdisplay: block; xborder-bottom: 1px solid #ddd; }
+/* Not sure why I added there?  */
+.HyperMD-header.HyperMD-header-2.cm-line { margin-bottom: 4px !important; }
+/* h3 */
+.HyperMD-header .cm-header-3 { xfont-weight: 500 !important; font-size: 1.2rem !important; }
+/* h4 */
+/** 2023-07-09 - Updated h4 too! **/
+.HyperMD-header .cm-header-4 { xfont-weight: 500 !important; font-size: 1.1rem !important; }
+/* h6 - inactive ... not sure idea here */
+.markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
+    xbackground: red;
+	xpadding-left: 5px !important;
+}
+/*
+---------
 HEADER COLLAPSE
 - ADDS BRIGHT BLUE IF HEADER IS COLLAPSED TO MAKE IT VERY OBVIOUS
 ---------
@@ -21,8 +63,6 @@ IMAGES
 	background-color: #f8f9fa;
 	font-size: 94%;
 }
-
-
 /*
 ---------
 ORDERED LISTS
@@ -52,7 +92,6 @@ ol li:before {
   text-align: right;
   width: 26px;
 }
-
 /*
 ---------
 HIGHER ACCENT COLOR
